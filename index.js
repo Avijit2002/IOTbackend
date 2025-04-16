@@ -10,6 +10,7 @@ app.get('/',(req,res,next)=>{
 })
 
 app.post('/data',(req,res,_)=>{
+    console.log("hi")
     console.log(req.body);
     res.send("data reached")
 })
