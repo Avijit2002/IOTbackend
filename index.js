@@ -1,9 +1,9 @@
 import express from "express"
 import bodyParser from "body-parser";
 
-const moisture = 0;
-const vibration = 0;
-const rain = 0;
+let moisture = 0;
+let vibration = 0;
+let rain = 0;
 
 
 const app = express()
