@@ -1,5 +1,6 @@
 import express from "express"
 import bodyParser from "body-parser";
+import cors from "cors";
 
 let moisture = 0;
 let vibration = 0;
@@ -9,6 +10,7 @@ let rain = 0;
 const app = express()
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors())
 
 app.get('/',(req,res,next)=>{
     res.json({
