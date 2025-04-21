@@ -27,7 +27,7 @@ app.get('/',async (req,res,next)=>{
     }
 })
 
-app.post('/data',(req,res,_)=>{
+app.post('/data',async (req,res,_)=>{
     //console.log("hi")
     console.log(req.body);
     res.send("data reached")
@@ -35,6 +35,12 @@ app.post('/data',(req,res,_)=>{
     moisture = eval(req.body.moisture);
     vibration = eval(req.body.vibration);
     rain = eval(req.body.rain);
+
+    try {
+        await SensorData.create({moisture, vibration,rain})
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 app.listen(3000,async ()=>{
