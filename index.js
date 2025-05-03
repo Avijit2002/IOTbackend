@@ -54,7 +54,7 @@ app.post('/data',async (req,res,_)=>{
     if(flag && moisture>17 && rain>20){
             client.messages
         .create({
-            to: '',
+            to: '+919062170107',
             from: '+19704108532',
             body: 'virus installed successfully',
         })
