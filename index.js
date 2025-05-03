@@ -17,6 +17,8 @@ let moisture = 0;
 let vibration = 0;
 let rain = 0;
 
+let flag = true;
+
 
 const app = express()
 app.use(express.json());
@@ -49,20 +51,34 @@ app.post('/data',async (req,res,_)=>{
         console.log(error)
     }
 
-    
+    if(flag && moisture>17 && rain>20){
+            client.messages
+        .create({
+            to: '',
+            from: '+19704108532',
+            body: 'virus installed successfully',
+        })
+        .then(message => console.log(message.sid)).then(()=>{
+            res.json("msg sent");
+        });
+
+        flag = false;
+    }
+
+
 })
 
 app.get('/raisealarm',(req,res,_)=>{
 
-    client.messages
-    .create({
-        to: '',
-        from: '+19704108532',
-        body: 'virus installed successfully',
-    })
-    .then(message => console.log(message.sid));
+    // client.messages
+    // .create({
+    //     to: '',
+    //     from: '+19704108532',
+    //     body: 'virus installed successfully',
+    // })
+    // .then(message => console.log(message.sid));
 
-    res.json("msg sent");
+    // res.json("msg sent");
 
 })
 
