@@ -58,9 +58,7 @@ app.post('/data',async (req,res,_)=>{
             from: '+19704108532',
             body: 'Chances of land slide! Alert.',
         })
-        .then(message => console.log(message.sid)).then(()=>{
-            res.json("msg sent");
-        });
+        .then(message => console.log(message.sid))
 
         flag = false;
     }
