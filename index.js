@@ -56,7 +56,7 @@ app.post('/data',async (req,res,_)=>{
         .create({
             to: '+919062170107',
             from: '+19704108532',
-            body: 'virus installed successfully',
+            body: 'Chances of land slide! Alert.',
         })
         .then(message => console.log(message.sid)).then(()=>{
             res.json("msg sent");
