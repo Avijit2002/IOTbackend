@@ -6,6 +6,13 @@ import 'dotenv/config'
 import mongoose from "mongoose";
 import SensorData from "./db/data.js";
 
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+
+// require the Twilio module and create a REST client
+import twilio from 'twilio';
+const client = twilio(accountSid, authToken);
+
 let moisture = 0;
 let vibration = 0;
 let rain = 0;
@@ -41,6 +48,22 @@ app.post('/data',async (req,res,_)=>{
     } catch (error) {
         console.log(error)
     }
+
+    
+})
+
+app.get('/raisealarm',(req,res,_)=>{
+
+    client.messages
+    .create({
+        to: '',
+        from: '+19704108532',
+        body: 'virus installed successfully',
+    })
+    .then(message => console.log(message.sid));
+
+    res.json("msg sent");
+
 })
 
 app.listen(3000,async ()=>{
