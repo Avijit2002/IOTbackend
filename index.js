@@ -80,7 +80,13 @@ app.get('/raisealarm',(req,res,_)=>{
 
 })
 
+const timerReset = ()=>{
+    setInterval(()=>flag=true,15000)
+}
+
 app.listen(3000,async ()=>{
     console.log("server started")
+    timerReset();
     await mongoose.connect(process.env.DATABASE_URL)
 })
+
